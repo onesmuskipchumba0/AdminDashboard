@@ -8,12 +8,20 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-import { Home, Mail, Star } from '@mui/icons-material';
+import { Close, Dashboard, Home, Mail, PointOfSaleRounded, Star } from '@mui/icons-material';
+import { Button, Typography } from '@mui/material';
 
 export default function DrawerComponent({toggleDrawer}) {
 
   return (
-    <Box sx={{ width: 250,}} className="bg-white mt-5 flex flex-1 flex-col" role="presentation" onClick={toggleDrawer(false)}>
+    <Box sx={{ width: 250,}} className="bg-white mt-5 flex flex-1 flex-col mx-6" role="presentation">
+        <div className='flex flex-row-reverse items-center mb-12 justify-center'>
+        <Button onClick={toggleDrawer(false)} className=''><Close className='text-red-400'/></Button>
+        <div className='flex flex-col'>
+            <Typography variant='h4' className='text-center'>Sedap<Dashboard className='ml-4 text-green-500'/></Typography>
+            <Typography variant='p' className='text-center text-slate-500 text-sm'>Modern Admin Dashboard</Typography>
+        </div>
+        </div>
       <List>
         {['Dashboard', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem sx={{":hover":{color:'white'}}} className='hover:bg-[rgba(0,255,197)] hover:text-[rgba(0,179,119)] hover:font-bold hover:rounded-md ' key={text} disablePadding>
