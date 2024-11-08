@@ -8,6 +8,7 @@ import img_2 from '../assets/images/card/2.png';
 import img_3 from '../assets/images/card/3.png';
 import img_4 from '../assets/images/card/4.png';
 import PieChartComponent from '../components/PieChartComponent';
+import SalesChart from '../components/SalesChart';
 
 export default function HomePage() {
   const [name, setName] = React.useState("John");
@@ -52,8 +53,12 @@ export default function HomePage() {
         </Box>
       </Box>
 
-      <Box className='w-full flex mt-5 justify-center' style={{ minHeight: '400px' }}>
+      {/* <Box className='w-full flex mt-5 justify-center' style={{ minHeight: '400px' }}>
         <PieChartComponent />
+      </Box> */}
+      
+      <Box className='w-full flex mt-5 justify-center' style={{ minHeight: '400px' }}>
+        <SalesChart/>
       </Box>
     </>
   );
