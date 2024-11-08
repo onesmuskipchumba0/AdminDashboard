@@ -1,5 +1,5 @@
 const { Schema, connect, model }  = require("mongoose")
-const uri = "mongodb+srv://onesmuskipchumba5:InNsjjJAqTZgbXCY@cluster0.xj96h.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0&ssl=false";
+const uri = 'mongodb://localhost:27017/test'
 main().catch(err => console.log(err));
 
 async function main() {
