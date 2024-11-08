@@ -41,7 +41,7 @@ const PieChartComponent = () => {
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#AF19FF'];
 
   return (
-    <Box>
+    <Box classname=''>
       <Typography variant="h6" gutterBottom>Sales Breakdown by Product</Typography>
       {!loadingSales && productSalesData.length > 0 ? (
         <>
