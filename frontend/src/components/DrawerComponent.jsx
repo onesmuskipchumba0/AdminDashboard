@@ -8,7 +8,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-import { Close, Dashboard, Home, Mail, PointOfSaleRounded, Star } from '@mui/icons-material';
+import { Close, Dashboard, Home, Mail, Star } from '@mui/icons-material';
 import { Button, Typography } from '@mui/material';
 
 export default function DrawerComponent({toggleDrawer}) {

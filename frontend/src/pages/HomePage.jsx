@@ -3,7 +3,14 @@ import DrawerComponent from '../components/DrawerComponent';
 import { Box, Button, Container, Drawer, Input, Typography, } from '@mui/material';
 import Nav from '../components/Nav';
 import { Delete, DeleteOutlineOutlined, DeleteSharp, MailOutlineOutlined, MailSharp, MenuOpen, NotificationAddSharp, NotificationsOutlined, Search, SettingsOutlined, SettingsSharp } from '@mui/icons-material';
+import CardHomeCat from '../components/CardHomeCat';
+import image from '../assets/images/card/1.png'
+import img_2 from '../assets/images/card/2.png'
+import img_3 from '../assets/images/card/3.png'
+import img_4 from '../assets/images/card/4.png'
+
 export default function HomePage() {
+  const [name, setName] = React.useState("John")
   const [open, setOpen] = React.useState(true);
 
   const toggleDrawer = (newOpen) => () => {
@@ -17,6 +24,7 @@ export default function HomePage() {
         <DrawerComponent toggleDrawer={toggleDrawer}/>
       </Drawer>
     <Box className={`flex flex-row w-full items-center justify-evenly gap-3 pt-6`}>
+
       {/* Search component */}
       <Box className={`flex ${open && "lg:ml-[18rem] md:ml-[20rem] ml-[18rem]"} ml-10 w-full items-center gap-2 `}>
         <Button onClick={toggleDrawer(true)} className='text-green-400'><MenuOpen className='text-inherit'/></Button>
@@ -29,6 +37,18 @@ export default function HomePage() {
           <DeleteOutlineOutlined sx={{fontSize:32}} className='bg-slate-200 p-1 text-slate-500 rounded-lg'/>
           <SettingsOutlined sx={{fontSize:32}} className='bg-red-200 p-1 text-red-500 rounded-lg'/>
         </Box>
+    </Box>
+    <Box className='flex flex-col mt-5 w-[80%]  items-center'>
+      <Typography variant='h4'>Dashboard</Typography>
+      <Typography className='text-sm text-slate-500'>Hello, {name} welcome back to sedap admin</Typography>
+    </Box>
+    <Box className='w-full flex mt-5 justify-center'>
+      <Box className="flex sm:flex-col flex-col lg:flex-row md:flex-row  items-center gap-3">
+        <CardHomeCat image={image} orders={75}/>
+        <CardHomeCat image={img_2} orders={"23"} title={"Total delivered"}/>
+        <CardHomeCat image={img_3} orders={"52"} title={"Total Canceled"}/>
+        <CardHomeCat image={img_4} orders={"$128"} title={"Total Sales"}/>
+      </Box>
     </Box>
     </>
   );

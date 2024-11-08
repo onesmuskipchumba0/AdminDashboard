@@ -12,3 +12,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body{
+  background-color: rgba(237, 237, 237, 0.8);
+}
