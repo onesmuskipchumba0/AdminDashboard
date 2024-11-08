@@ -10,6 +10,7 @@ import img_4 from '../assets/images/card/4.png';
 import PieChartComponent from '../components/PieChartComponent';
 import SalesChart from '../components/SalesChart';
 import SalesLineChart from '../components/SalesLineChart';
+import CustomerReviewCard from '../components/CustomerReviewCard';
 
 export default function HomePage() {
   const [name, setName] = React.useState("John");
@@ -53,16 +54,22 @@ export default function HomePage() {
           <CardHomeCat image={img_4} orders={"$128"} title={"Total Sales"}/>
         </Box>
       </Box>
-
-      {/* <Box className='w-full flex mt-5 justify-center' style={{ minHeight: '400px' }}>
-        <PieChartComponent />
-      </Box> */}
-      
-      <Box className='w-full flex mt-5 justify-center' style={{ minHeight: '400px' }}>
-        <SalesChart/>
+      <Box className='flex w-full justify-center lg;gap-3 md:gap-7 sm:flex-col md:flex-col lg:flex-row items-center flex-col'>
+        <Box className='w-1/3 flex mt-5 shadow justify-center' style={{ minHeight: '400px' }}>
+          <PieChartComponent />
+        </Box>
+        
+        <Box className='w-1/3 flex mt-5 shadow justify-center' style={{ minHeight: '400px' }}>
+          <SalesChart/>
+        </Box>
       </Box>
-      <Box className='w-full flex mt-5 justify-center' style={{ minHeight: '400px' }}>
-        <SalesLineChart/>
+      <Box className='flex flex-row w-full justify-center items-center'>
+        <Box className='w-3/4 flex  shadow mx-3 justify-center' style={{ minHeight: '400px' }}>
+          <SalesLineChart/>
+        </Box>
+      </Box>
+      <Box>
+        <CustomerReviewCard/>
       </Box>
     </>
   );

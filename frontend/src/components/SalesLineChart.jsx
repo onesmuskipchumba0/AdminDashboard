@@ -25,11 +25,11 @@ const SalesLineChart = () => {
   }, []);
 
   return (
-    <Box sx={{ width: "100%", padding: 2, backgroundColor: "#f5f5f5", borderRadius: 2 }}>
+    <Box className='' sx={{ width: "80%", padding: 2, backgroundColor: "#f5f5f5", borderRadius: 2 }}>
       <Typography variant="h6" component="div" gutterBottom>
         Sales Over Time
       </Typography>
-      <ResponsiveContainer width="100%" height={400}>
+      <ResponsiveContainer width="80%" height={400}>
         <LineChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="date" tick={{ fontSize: 12 }} />

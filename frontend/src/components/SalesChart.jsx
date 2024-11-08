@@ -46,7 +46,7 @@ const SalesChart = () => {
       <Typography variant="body2" color="text.secondary">
         Lorem ipsum dolor sit amet, consectetur adip
       </Typography>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 2 }}>
+      <Box sx={{ display: 'flex',flexDirection:'column', justifyContent: 'space-between', alignItems: 'center', marginTop: 2 }}>
         <ResponsiveContainer width="100%" height={200}>
           <AreaChart data={salesData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
             <XAxis dataKey="date" />
