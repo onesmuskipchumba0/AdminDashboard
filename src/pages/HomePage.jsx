@@ -16,8 +16,7 @@ export default function HomePage() {
       <Drawer open={open} onClose={toggleDrawer(false)}>
         <DrawerComponent toggleDrawer={toggleDrawer}/>
       </Drawer>
-    <Box className={`flex flex-row w-full items-center justify-evenly pt-6`}>
-      <Box className={`flex w-full items-center justify-between gap-3 `}>
+    <Box className={`flex flex-row w-full items-center justify-evenly gap-3 pt-6`}>
       {/* Search component */}
       <Box className={`flex ${open && "lg:ml-[18rem] md:ml-[20rem] ml-[18rem]"} ml-10 w-full items-center gap-2 `}>
         <Button onClick={toggleDrawer(true)} className='text-green-400'><MenuOpen className='text-inherit'/></Button>
@@ -30,7 +29,6 @@ export default function HomePage() {
           <DeleteOutlineOutlined sx={{fontSize:32}} className='bg-slate-200 p-1 text-slate-500 rounded-lg'/>
           <SettingsOutlined sx={{fontSize:32}} className='bg-red-200 p-1 text-red-500 rounded-lg'/>
         </Box>
-      </Box>
     </Box>
     </>
   );
