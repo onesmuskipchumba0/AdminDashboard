@@ -41,8 +41,8 @@ const PieChartComponent = () => {
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#AF19FF'];
 
   return (
-    <Box classname=''>
-      <Typography variant="h6" gutterBottom>Sales Breakdown by Product</Typography>
+    <Box classname='flex flex-col items-center w-full'>
+      <Typography variant="h6" className='text-center' gutterBottom>Sales Breakdown by Product</Typography>
       {!loadingSales && productSalesData.length > 0 ? (
         <>
           <PieChart width={400} height={400}>
@@ -63,7 +63,7 @@ const PieChartComponent = () => {
             <Tooltip />
             <Legend />
           </PieChart>
-          <Typography variant="body1" style={{ marginTop: 16 }}>
+          <Typography className='text-center' variant="body1" style={{ marginTop: 16 }}>
             Total Sales Amount: ${totalSales.toFixed(2)}
           </Typography>
         </>

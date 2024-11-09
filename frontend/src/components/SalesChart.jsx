@@ -41,10 +41,10 @@ const SalesChart = () => {
   };
 
   return (
-    <Box sx={{ padding: 2, border: '1px solid #e0e0e0', borderRadius: 1 }}>
+    <Box className='w-full' sx={{ padding: 2, border: '1px solid #e0e0e0', borderRadius: 1 }}>
       <Typography variant="h6">Chart Order</Typography>
       <Typography variant="body2" color="text.secondary">
-        Lorem ipsum dolor sit amet, consectetur adip
+        The sales from Sedap over the last year
       </Typography>
       <Box sx={{ display: 'flex',flexDirection:'column', justifyContent: 'space-between', alignItems: 'center', marginTop: 2 }}>
         <ResponsiveContainer width="100%" height={200}>
