@@ -1,68 +1,65 @@
-import { Button, Drawer, Input, Paper } from '@mui/material'
-import { Box, width } from '@mui/system'
-import axios from 'axios'
-import React, { useState } from 'react'
+import { Button, Drawer, Input, Paper } from '@mui/material';
+import { Box } from '@mui/system';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import DrawerComponent from '../components/DrawerComponent';
 import { DeleteOutlineOutlined, MailOutlineOutlined, MenuOpen, NotificationsOutlined, Search, SettingsOutlined } from '@mui/icons-material';
+import SearchBar from '../components/SearchBar';
+import { useParams } from 'react-router-dom';
+
 const Customers = () => {
-    const [customers, setCustomers] = useState([])
-    const [open, setOpen] = React.useState(true);
+    const [customers, setCustomers] = useState([]);
+    const [open, setOpen] = useState(false);
+    const { name } = useParams();
 
     const toggleDrawer = (newOpen) => () => {
-      setOpen(newOpen);
+        setOpen(newOpen);
     };
-    const fetchCustomers = async () =>{
-        const responce = await axios.get("http://localhost:3000/customers");
-        setCustomers(responce.data);
-    }
-    
-    React.useEffect(() => {
+
+    const fetchCustomers = async () => {
+        try {
+            const response = await axios.get(name ? `http://localhost:3000/customers/${name}` : `http://localhost:3000/customers`);
+            setCustomers(response.data);
+        } catch (error) {
+            console.error("Error fetching customers:", error);
+        }
+    };
+
+    useEffect(() => {
         fetchCustomers();
-    }, [])
+    }, [name]);
 
     const columns = [
-        { field:"id", headerName:"ID", width:70},
-        { field:"name", headerName:"Name", width:200},
-        { field:"email", headerName:"Email", width:300},
-        { field:"phone", headerName:"Phone", width:200},
-        { field:"address", headerName:"Address", width:400},
-    ]
-    const paginationModel = { page: 0, pageSize: 8 };
+        { field: "id", headerName: "ID", width: 70 },
+        { field: "name", headerName: "Name", width: 200 },
+        { field: "email", headerName: "Email", width: 300 },
+        { field: "phone", headerName: "Phone", width: 200 },
+        { field: "address", headerName: "Address", width: 400 },
+    ];
 
-  return (
-    <>
-      <Drawer open={open} onClose={toggleDrawer(false)}>
-        <DrawerComponent toggleDrawer={toggleDrawer}/>
-      </Drawer>
+    const [paginationModel, setPaginationModel] = useState({ page: 0, pageSize: 8 });
 
-      <Box className={`flex flex-row w-full bg-white items-center justify-evenly gap-3 pt-6`}>
-        {/* Search component */}
-        <Box className={`flex ${open && "lg:ml-[18rem] md:ml-[20rem] ml-[18rem]"} ml-10 w-full items-center gap-2 `}>
-          <Button onClick={toggleDrawer(true)} className='text-green-400'><MenuOpen className='text-inherit'/></Button>
-          <Input className={`md:w-[60%] sm:w-[80%] lg:w-[60%] w-[70%]`} placeholder='Search here'/>
-          <Search className='text-slate-400'/>
-        </Box>
-        <Box className='gap-4 flex ml-auto mr-10'>
-          <NotificationsOutlined sx={{fontSize:32}} className='bg-blue-200 p-1 text-blue-500 rounded-lg'/>
-          <MailOutlineOutlined sx={{fontSize:32}} className='bg-blue-200 p-1 text-blue-500 rounded-lg'/>
-          <DeleteOutlineOutlined sx={{fontSize:32}} className='bg-slate-200 p-1 text-slate-500 rounded-lg'/>
-          <SettingsOutlined sx={{fontSize:32}} className='bg-red-200 p-1 text-red-500 rounded-lg'/>
-        </Box>
-      </Box>
-    <Paper className='mt-10'>
-        <DataGrid 
-        columns={columns}
-            rows={customers}
-            initialState={{ pagination: { paginationModel } }}
-            pageSizeOptions={[5, 10]}
-            checkboxSelection
-            sx={{ border: 0 }}>
-            
-        </DataGrid>
-    </Paper>
-    </>
-  )
-}
+    return (
+        <>
+            <Drawer open={open} onClose={toggleDrawer(false)}>
+                <DrawerComponent toggleDrawer={toggleDrawer} />
+            </Drawer>
+            <SearchBar open={open} route="customers" toggleDrawer={toggleDrawer} />
 
-export default Customers
+            <Paper className="mt-10">
+                <DataGrid
+                    columns={columns}
+                    rows={customers}
+                    pageSizeOptions={[5, 10]}
+                    paginationModel={paginationModel}
+                    onPaginationModelChange={setPaginationModel}
+                    checkboxSelection
+                    sx={{ border: 0 }}
+                />
+            </Paper>
+        </>
+    );
+};
+
+export default Customers;
